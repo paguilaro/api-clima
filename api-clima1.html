@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=+, initial-scale=1.0">
+  <title>Pronostico tiempo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Pronóstico del tiempo</h1>
+    <div class="row">
+      <div class="col-6">
+        <form class="m-4 bg-secondary text-white p-4" id="form">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Ciudad</label>
+            <input type="string" class="form-control" id="id-personaje">
+          </div>
+          <button type="submit" class="btn btn-primary">submit</button>
+        </form>
+      </div>
+      <div class="col-6">
+        <div class="bg-primary p-4">
+          <p>Ciudad: <span id="city"></span></p>
+          <p>Temperatura: <span id="temp"></span>ºC</p>
+          <p>Latitude: <span id="latitude"></span></p>
+          <p>Longitud: <span id="longitude"></span></p>
+        </div>
+      </div>
+    </div>
+    </div>
+  
+
+
+
+
+    
+  <script>
+    $('#form').on('submit', function(evento) {
+      evento.preventDefault(); // evitamos que se recargue la página
+
+      // 1. Recuperar los inputs del usuario
+      const id_city = $('#id-city').val();
+      let city = {};
+      
+      // 2. Ir a buscar los datos con AJAX
+      $.get(' http://api.openweathermap.org/data/2.5/weather?q='+ location + ',40e87aa09827521b9b5d3dd975232ff7', function(data) {
+        let temperatura = (data.main.temp-273). toFixed(2) ;
+
+        // 3. Mostrarle los datos al usuario
+        $('#city').html(city.name);
+        $('#temp').html(personaje.height);
+        $('#latitude').html(personaje.mass);
+        $('#longitude').html(personaje.eye_color);
+        
+        console.log(personaje);
+      });
+
+    });
+//   
+  
+  </script>
+</body>
+</html>
+
+
